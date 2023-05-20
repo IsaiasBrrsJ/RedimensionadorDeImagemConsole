@@ -36,20 +36,20 @@ namespace Redimensionador
             FileInfo fileInfo = null!;
             Bitmap bitmapResize = null!;
             var diretorioAtual = Environment.CurrentDirectory;
-
-
+            var imagemWidth = 1080;
+            var imagemHeight = 720;
             var filesDoDiretorio = Directory.EnumerateFiles(pastaOriginal);
             foreach (var FileOriginal in filesDoDiretorio)
             {
                 Console.Clear();
 
                
-                bitmapResize = new Bitmap(1080, 720);
+                bitmapResize = new Bitmap(imagemWidth, imagemHeight);
                 var image = Image.FromFile(FileOriginal);
                 using (var graphicsImage = Graphics.FromImage(bitmapResize))
                 {
                     graphicsImage.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    graphicsImage.DrawImage(image, 0, 0, 1080, 720);
+                    graphicsImage.DrawImage(image, 0, 0, imagemWidth, imagemHeight);
                     graphicsImage.Dispose();
                 }
            
